@@ -24,6 +24,26 @@ class Wit
     protected $client;
 
     /**
+     * @var \Kerox\Wit\Api\Message
+     */
+    protected $messageApi;
+
+    /**
+     * @var \Kerox\Wit\Api\Speech
+     */
+    protected $speechApi;
+
+    /**
+     * @var \Kerox\Wit\Api\Converse
+     */
+    protected $converseApi;
+
+    /**
+     * @var \Kerox\Wit\Api\Entities
+     */
+    protected $entitiesApi;
+
+    /**
      * Wit constructor.
      *
      * @param string $accessToken
@@ -41,7 +61,11 @@ class Wit
      */
     public function message(): Message
     {
-        $this->getApiInstance('Message');
+        if ($this->messageApi === null) {
+            $this->messageApi = $this->getApiInstance('Message');
+        }
+
+        return $this->messageApi;
     }
 
     /**
@@ -49,7 +73,11 @@ class Wit
      */
     public function speech(): Speech
     {
-        $this->getApiInstance('Speech');
+        if ($this->speechApi === null) {
+            $this->speechApi = $this->getApiInstance('Speech');
+        }
+
+        return $this->speechApi;
     }
 
     /**
@@ -57,7 +85,11 @@ class Wit
      */
     public function converse(): Converse
     {
-        $this->getApiInstance('Converse');
+        if ($this->converseApi === null) {
+            $this->converseApi = $this->getApiInstance('Converse');;
+        }
+
+        return $this->converseApi;
     }
 
     /**
@@ -65,7 +97,11 @@ class Wit
      */
     public function entities(): Entities
     {
-        $this->getApiInstance('Entities');
+        if ($this->entitiesApi === null) {
+            $this->entitiesApi = $this->getApiInstance('Entities');
+        }
+
+        return $this->entitiesApi;
     }
 
     /**
