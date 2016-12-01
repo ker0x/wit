@@ -1,7 +1,7 @@
 <?php
 namespace Kerox\Wit\Model\Step;
 
-abstract class AbstractStep implements StepInterface
+abstract class AbstractStep
 {
 
     const TYPE_MERGE = 'merge';

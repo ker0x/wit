@@ -10,6 +10,11 @@ abstract class AbstractResponse
     const ERROR_CODE = 'code';
 
     /**
+     * @var \Psr\Http\Message\ResponseInterface
+     */
+    protected $response;
+
+    /**
      * @var null|string
      */
     protected $error;
@@ -26,6 +31,8 @@ abstract class AbstractResponse
      */
     public function __construct(ResponseInterface $response)
     {
+        $this->response = $response;
+
         $this->parseResponse($this->decodeResponse($response));
     }
 
@@ -58,5 +65,13 @@ abstract class AbstractResponse
         }
 
         return false;
+    }
+
+    /**
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function getResponse(): ResponseInterface
+    {
+        return $this->response;
     }
 }
