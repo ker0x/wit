@@ -2,6 +2,7 @@
 namespace Kerox\Wit;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Kerox\Wit\Api\Converse;
 use Kerox\Wit\Api\Entities;
 use Kerox\Wit\Api\Message;
@@ -47,13 +48,18 @@ class Wit
      * Wit constructor.
      *
      * @param string $accessToken
+     * @param \GuzzleHttp\ClientInterface $client
      */
-    public function __construct(string $accessToken)
+    public function __construct(string $accessToken, ClientInterface $client = null)
     {
         $this->accessToken = $accessToken;
-        $this->client = new Client([
-            'base_uri' => self::API_URL,
-        ]);
+
+        if ($client === null) {
+            $client = new Client([
+                'base_uri' => self::API_URL,
+            ]);
+        }
+        $this->client = $client;
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 namespace Kerox\Wit\Api;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Kerox\Wit\Request\MessageRequest;
 use Kerox\Wit\Response\MessageResponse;
 
@@ -12,9 +12,9 @@ class Message extends AbstractApi
      * Message constructor.
      *
      * @param string $accessToken
-     * @param \GuzzleHttp\Client $client
+     * @param \GuzzleHttp\ClientInterface $client
      */
-    public function __construct(string $accessToken, Client $client)
+    public function __construct(string $accessToken, ClientInterface $client)
     {
         parent::__construct($accessToken, $client);
     }

@@ -1,7 +1,7 @@
 <?php
 namespace Kerox\Wit\Api;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 
 abstract class AbstractApi
 {
@@ -12,7 +12,7 @@ abstract class AbstractApi
     protected $accessToken;
 
     /**
-     * @var Client
+     * @var \GuzzleHttp\ClientInterface
      */
     protected $client;
 
@@ -20,9 +20,9 @@ abstract class AbstractApi
      * AbstractApi constructor.
      *
      * @param string $accessToken
-     * @param \GuzzleHttp\Client $client
+     * @param \GuzzleHttp\ClientInterface $client
      */
-    public function __construct(string $accessToken, Client $client)
+    public function __construct(string $accessToken, ClientInterface $client)
     {
         $this->accessToken = $accessToken;
         $this->client = $client;

@@ -1,12 +1,12 @@
 <?php
 namespace Kerox\Wit\Api;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 
 class Converse extends AbstractApi
 {
 
-    public function __construct(string $accessToken, Client $client)
+    public function __construct(string $accessToken, ClientInterface $client)
     {
         parent::__construct($accessToken, $client);
     }
