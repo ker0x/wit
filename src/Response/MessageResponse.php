@@ -93,6 +93,14 @@ class MessageResponse extends AbstractResponse
     }
 
     /**
+     * @return int
+     */
+    public function countEntities(): int
+    {
+        return count($this->entities);
+    }
+
+    /**
      * @param array $response
      */
     private function setEntities(array $response)
@@ -104,12 +112,19 @@ class MessageResponse extends AbstractResponse
 
     /**
      * @param string $entityName
-     * @return array|void
+     * @return bool
+     */
+    public function hasEntity(string $entityName): bool
+    {
+        return isset($this->entities[$entityName]);
+    }
+
+    /**
+     * @param string $entityName
+     * @return array
      */
     public function getEntity(string $entityName)
     {
-        if (!empty($this->entities) && isset($this->entities[$entityName])) {
-            return $this->entities[$entityName];
-        }
+        return $this->entities[$entityName];
     }
 }
