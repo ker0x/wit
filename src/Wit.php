@@ -92,7 +92,7 @@ class Wit
     public function converse(): Converse
     {
         if ($this->converseApi === null) {
-            $this->converseApi = $this->getApiInstance('Converse');;
+            $this->converseApi = $this->getApiInstance('Converse');
         }
 
         return $this->converseApi;

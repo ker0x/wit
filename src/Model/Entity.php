@@ -78,7 +78,7 @@ class Entity implements \JsonSerializable
      */
     public function setLookups(array $lookups): Entity
     {
-        foreach($lookups as $lookup) {
+        foreach ($lookups as $lookup) {
             $this->isValidLookup($lookup);
         }
         $this->lookups = $lookups;
