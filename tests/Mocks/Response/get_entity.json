@@ -1,0 +1,37 @@
+{
+  "builtin": false,
+  "doc": "User-defined entity",
+  "id": "571979db-f6ac-4820-bc28-a1e0787b98fc",
+  "lang": "en",
+  "lookups": [
+    "keywords",
+    "free-text"
+  ],
+  "name": "first_name",
+  "values": [
+    {
+      "value": "Willy",
+      "expressions": [
+        "Willy"
+      ]
+    },
+    {
+      "value": "Laurent",
+      "expressions": [
+        "Laurent"
+      ]
+    },
+    {
+      "value": "Julien",
+      "expressions": [
+        "Julien"
+      ]
+    },
+    {
+      "value": "Alex",
+      "expressions": [
+        "Alex"
+      ]
+    }
+  ]
+}

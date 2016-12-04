@@ -1,0 +1,14 @@
+{
+  "msg_id": "742eca38-ca71-4c03-8cdd-e96a9905a3d2",
+  "_text": "hello world",
+  "entities": {
+    "contact": [
+      {
+        "confidence": 0.9744819413162246,
+        "type": "value",
+        "value": "world",
+        "suggested": true
+      }
+    ]
+  }
+}
