@@ -13,6 +13,7 @@ class EntitiesResponse extends AbstractResponse
     const LOOKUPS = 'lookups';
     const BUILTIN = 'builtin';
     const EXOTIC = 'exotic';
+    const VALUES = 'values';
     const DELETED = 'deleted';
 
     /**
@@ -51,6 +52,16 @@ class EntitiesResponse extends AbstractResponse
     protected $deleted;
 
     /**
+     * @var null|array
+     */
+    protected $entities = [];
+
+    /**
+     * @var array
+     */
+    protected $values = [];
+
+    /**
      * EntitiesResponse constructor.
      *
      * @param \Psr\Http\Message\ResponseInterface $response
@@ -74,6 +85,8 @@ class EntitiesResponse extends AbstractResponse
             $this->setLookups($response);
             $this->setBuiltin($response);
             $this->setDeleted($response);
+            $this->setEntities($response);
+            $this->setValues($response);
         }
     }
 
@@ -200,6 +213,52 @@ class EntitiesResponse extends AbstractResponse
     {
         if (isset($response[self::DELETED])) {
             $this->deleted = $response[self::DELETED];
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getEntities(): array
+    {
+        return $this->entities;
+    }
+
+    /**
+     * @param array $response
+     */
+    private function setEntities(array $response)
+    {
+        $constants = (new \ReflectionClass(__CLASS__))->getConstants();
+
+        $hasEntities = true;
+        foreach ($constants as $constant) {
+            if (array_key_exists($constant, $response)) {
+                $hasEntities = false;
+                break;
+            }
+        }
+
+        if ($hasEntities) {
+            $this->entities = $response;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getValues(): array
+    {
+        return $this->values;
+    }
+
+    /**
+     * @param array $response
+     */
+    public function setValues(array $response)
+    {
+        if (isset($response[self::VALUES])) {
+            $this->values = $response[self::VALUES];
         }
     }
 }

@@ -57,7 +57,7 @@ class EntitiesRequest extends AbstractRequest
      */
     private function isValidBody($body)
     {
-        if ($body !== null && (!$body instanceof Entity || !$body instanceof Value || !$body instanceof Expression)) {
+        if ($body !== null && !($body instanceof Entity || $body instanceof Value || $body instanceof Expression)) {
             throw new \InvalidArgumentException('Only instance of Entity, Value or Expression are accepted as second argument.');
         }
     }

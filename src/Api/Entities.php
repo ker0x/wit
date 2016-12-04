@@ -44,7 +44,8 @@ class Entities extends AbstractApi
      */
     public function create(Entity $entity): EntitiesResponse
     {
-        $response = $this->client->post('/entities', $this->request($entity));
+        $request = new EntitiesRequest($this->accessToken, $entity);
+        $response = $this->client->post('/entities', $request->build());
 
         return $this->response($response);
     }

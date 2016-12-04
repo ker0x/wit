@@ -1,0 +1,8 @@
+{
+  "name" : "favorite_city",
+  "lang" : "en",
+  "lookups" : [ "keywords" ],
+  "builtin" : false,
+  "doc" : "A city that I like",
+  "id" : "5418abc7-cc68-4073-ae9e-3a5c3c81d965"
+}

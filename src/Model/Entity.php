@@ -94,6 +94,8 @@ class Entity implements \JsonSerializable
     {
         $this->isValidLookup($lookup);
         $this->lookups[] = $lookup;
+
+        return $this;
     }
 
     /**

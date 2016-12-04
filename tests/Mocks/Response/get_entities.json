@@ -1,0 +1,9 @@
+[
+  "wit$amount_of_money",
+  "wit$contact",
+  "wit$datetime",
+  "wit$on_off",
+  "wit$phrase_to_translate",
+  "wit$temperature",
+  "intent"
+]

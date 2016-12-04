@@ -68,6 +68,22 @@ abstract class AbstractResponse
     }
 
     /**
+     * @return null|string
+     */
+    public function getError()
+    {
+        return $this->error;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getErrorCode()
+    {
+        return $this->errorCode;
+    }
+
+    /**
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function getResponse(): ResponseInterface
