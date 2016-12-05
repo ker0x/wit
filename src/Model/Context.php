@@ -63,6 +63,9 @@ class Context implements \JsonSerializable
         return empty($this->data);
     }
 
+    /**
+     * @param \DateTimeInterface $dateTime
+     */
     public function setReferenceTime(\DateTimeInterface $dateTime)
     {
         $this->add('reference_time', $dateTime->format(DATE_ISO8601));

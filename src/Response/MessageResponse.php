@@ -116,15 +116,24 @@ class MessageResponse extends AbstractResponse
      */
     public function hasEntity(string $entityName): bool
     {
-        return isset($this->entities[$entityName]);
+        $entities = $this->getEntities();
+        if ($entities !== null) {
+            return array_key_exists($entityName, $entities);
+        }
+
+        return false;
     }
 
     /**
      * @param string $entityName
-     * @return array
+     * @return null|array
      */
     public function getEntity(string $entityName)
     {
-        return $this->entities[$entityName];
+        if ($this->hasEntity($entityName)) {
+            return $this->entities[$entityName];
+        }
+
+        return null;
     }
 }
