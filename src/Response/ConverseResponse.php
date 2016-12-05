@@ -131,6 +131,14 @@ class ConverseResponse extends AbstractResponse
     }
 
     /**
+     * @return bool
+     */
+    public function hasQuickReplies(): bool
+    {
+        return !empty($this->quickReplies);
+    }
+
+    /**
      * @return null|string
      */
     public function getAction()
@@ -164,6 +172,33 @@ class ConverseResponse extends AbstractResponse
         if (isset($response[self::ENTITIES])) {
             $this->entities = $response[self::ENTITIES];
         }
+    }
+
+    /**
+     * @param string $entity
+     * @return mixed|null
+     */
+    public function getEntity(string $entity)
+    {
+        if ($this->hasEntity($entity)) {
+            return $this->entities[$entity];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $entity
+     * @return bool
+     */
+    public function hasEntity(string $entity): bool
+    {
+        $entities = $this->getEntities();
+        if ($entities !== null) {
+            return array_key_exists($entity, $entities);
+        }
+
+        return false;
     }
 
     /**
