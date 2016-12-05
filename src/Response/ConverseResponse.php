@@ -175,30 +175,30 @@ class ConverseResponse extends AbstractResponse
     }
 
     /**
-     * @param string $entity
-     * @return mixed|null
-     */
-    public function getEntity(string $entity)
-    {
-        if ($this->hasEntity($entity)) {
-            return $this->entities[$entity];
-        }
-
-        return null;
-    }
-
-    /**
-     * @param string $entity
+     * @param string $entityName
      * @return bool
      */
-    public function hasEntity(string $entity): bool
+    public function hasEntity(string $entityName): bool
     {
         $entities = $this->getEntities();
         if ($entities !== null) {
-            return array_key_exists($entity, $entities);
+            return array_key_exists($entityName, $entities);
         }
 
         return false;
+    }
+
+    /**
+     * @param string $entityName
+     * @return null|array
+     */
+    public function getEntity(string $entityName)
+    {
+        if ($this->hasEntity($entityName)) {
+            return $this->entities[$entityName];
+        }
+
+        return null;
     }
 
     /**
