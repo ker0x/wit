@@ -38,8 +38,10 @@ class MessageTest extends AbstractTestCase
         $this->assertEquals('742eca38-ca71-4c03-8cdd-e96a9905a3d2', $response->getMessageId());
         $this->assertEquals('hello world', $response->getText());
         $this->assertTrue($response->hasEntity('contact'));
-        $this->assertEquals(['contact'=>[['confidence' => 0.9744819413162246,'type'=>'value','value'=>'world','suggested'=>true]]], $response->getEntities());
-        $this->assertEquals([['confidence' => 0.9744819413162246,'type'=>'value','value'=>'world','suggested'=>true]], $response->getEntity('contact'));
-        $this->assertEquals(1, $response->countEntities());
+        $this->assertEquals(['contact'=>[['confidence' => 0.9855819413162246,'type'=>'value','value'=>'hello','suggested'=>true],['confidence' => 0.9744819413162246,'type'=>'value','value'=>'world','suggested'=>true]],'intent'=>[['confidence'=>0.9744819413162246,'value'=>'greeting']]], $response->getEntities());
+        $this->assertEquals([['confidence' => 0.9855819413162246,'type'=>'value','value'=>'hello','suggested'=>true],['confidence' => 0.9744819413162246,'type'=>'value','value'=>'world','suggested'=>true]], $response->getEntity('contact'));
+        $this->assertEquals(2, $response->countEntities());
+        $this->assertEquals(['hello','world'], $response->getValuesForEntity('contact'));
+        $this->assertEquals('hello', $response->getFirstValueForEntity('contact'));
     }
 }

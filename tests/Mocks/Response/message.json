@@ -4,10 +4,22 @@
   "entities": {
     "contact": [
       {
+        "confidence": 0.9855819413162246,
+        "type": "value",
+        "value": "hello",
+        "suggested": true
+      },
+      {
         "confidence": 0.9744819413162246,
         "type": "value",
         "value": "world",
         "suggested": true
+      }
+    ],
+    "intent": [
+      {
+        "confidence": 0.9744819413162246,
+        "value": "greeting"
       }
     ]
   }
