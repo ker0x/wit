@@ -21,9 +21,9 @@ class MessageResponse extends AbstractResponse
     protected $text;
 
     /**
-     * @var array
+     * @var null|array
      */
-    protected $entities = [];
+    protected $entities;
 
     /**
      * MessageResponse constructor.
@@ -97,7 +97,7 @@ class MessageResponse extends AbstractResponse
      */
     public function countEntities(): int
     {
-        return count($this->entities);
+        return (is_array($this->entities)) ? count($this->entities) : 0;
     }
 
     /**
@@ -132,6 +132,32 @@ class MessageResponse extends AbstractResponse
     {
         if ($this->hasEntity($entityName)) {
             return $this->entities[$entityName];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $entityName
+     * @return array|null
+     */
+    public function getValuesForEntity(string $entityName)
+    {
+        if ($this->hasEntity($entityName)) {
+            return array_column($this->entities[$entityName], 'value');
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $entityName
+     * @return string|null
+     */
+    public function getFirstValueForEntity(string $entityName)
+    {
+        if ($this->hasEntity($entityName)) {
+            return $this->entities[$entityName][0]['value'];
         }
 
         return null;

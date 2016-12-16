@@ -165,6 +165,14 @@ class ConverseResponse extends AbstractResponse
     }
 
     /**
+     * @return int
+     */
+    public function countEntities(): int
+    {
+        return (is_array($this->entities)) ? count($this->entities) : 0;
+    }
+
+    /**
      * @param array $response
      */
     public function setEntities(array $response)
