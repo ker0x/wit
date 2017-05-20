@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Api;
 
 use GuzzleHttp\ClientInterface;

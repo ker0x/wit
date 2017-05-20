@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Model;
 
 use Kerox\Wit\Model\Entity\Value;
@@ -126,10 +127,10 @@ class Entity implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $json = [
-            'doc' => $this->doc,
-            'lookups' => $this->lookups,
             'id' => $this->id,
+            'doc' => $this->doc,
             'values' => $this->values,
+            'lookups' => $this->lookups,
         ];
 
         return array_filter($json);

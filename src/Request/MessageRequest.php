@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Request;
 
 class MessageRequest extends AbstractRequest
@@ -20,20 +21,27 @@ class MessageRequest extends AbstractRequest
     protected $threadId;
 
     /**
+     * @var int
+     */
+    protected $traitNumber;
+
+    /**
      * MessageRequest constructor.
      *
      * @param string $accessToken
      * @param string $message
      * @param null|string $messageId
      * @param null|string $threadId
+     * @param int $traitNumber
      */
-    public function __construct(string $accessToken, string $message, $messageId, $threadId)
+    public function __construct(string $accessToken, string $message, $messageId, $threadId, int $traitNumber)
     {
         parent::__construct($accessToken);
 
         $this->message = $message;
         $this->messageId = $messageId;
         $this->threadId = $threadId;
+        $this->traitNumber = $traitNumber;
     }
 
     /**
@@ -61,6 +69,7 @@ class MessageRequest extends AbstractRequest
             'q' => $this->message,
             'msg_id' => $this->messageId,
             'thread_id' => $this->threadId,
+            'n' => $this->traitNumber,
         ];
 
         return array_filter($query);

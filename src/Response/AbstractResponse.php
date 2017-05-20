@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Response;
 
 use Psr\Http\Message\ResponseInterface;

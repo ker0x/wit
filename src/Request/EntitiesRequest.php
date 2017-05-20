@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Request;
 
 use Kerox\Wit\Model\Entity;

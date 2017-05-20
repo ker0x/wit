@@ -1,0 +1,21 @@
+{
+  "doc": "Detect the type of action",
+  "lookups": [
+    "trait",
+    "keywords"
+  ],
+  "id": "action_type",
+  "values": [
+    {
+      "value": "booking",
+      "expressions": [
+        "I want to book at flight",
+        "I need to buy a ticket",
+        "need to book a cab"
+      ]
+    },
+    {
+      "value": "scraping"
+    }
+  ]
+}

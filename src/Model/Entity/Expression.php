@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Model\Entity;
 
 class Expression implements \JsonSerializable

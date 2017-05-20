@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Model\Step;
 
 abstract class AbstractStep
