@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Request;
 
 use Kerox\Wit\Wit;
@@ -10,11 +11,6 @@ abstract class AbstractRequest
      * @var string
      */
     protected $accessToken;
-
-    /**
-     * @var string
-     */
-    protected $apiVersion = Wit::API_VERSION;
 
     /**
      * AbstractRequest constructor.
@@ -33,7 +29,7 @@ abstract class AbstractRequest
     {
         return [
             'Authorization' => 'Bearer ' . $this->accessToken,
-            'Accept' => 'application/vnd.wit.' . $this->apiVersion . '+json'
+            'Accept' => 'application/vnd.wit.' . Wit::API_VERSION . '+json'
         ];
     }
 

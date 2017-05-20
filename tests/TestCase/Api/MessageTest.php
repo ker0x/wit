@@ -44,4 +44,9 @@ class MessageTest extends AbstractTestCase
         $this->assertEquals(['hello','world'], $response->getValuesForEntity('contact'));
         $this->assertEquals('hello', $response->getFirstValueForEntity('contact'));
     }
+
+    public function tearDown()
+    {
+        unset($this->messageApi);
+    }
 }

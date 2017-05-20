@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Api;
 
 use GuzzleHttp\ClientInterface;
@@ -13,6 +14,11 @@ class Entities extends AbstractApi
 {
 
     /**
+     * @var null|\Kerox\Wit\Api\Entities
+     */
+    private static $_instance;
+
+    /**
      * Entities constructor.
      *
      * @param string $accessToken
@@ -21,6 +27,20 @@ class Entities extends AbstractApi
     public function __construct(string $accessToken, ClientInterface $client)
     {
         parent::__construct($accessToken, $client);
+    }
+
+    /**
+     * @param string $accessToken
+     * @param \GuzzleHttp\ClientInterface $client
+     * @return \Kerox\Wit\Api\Entities
+     */
+    public static function getInstance(string $accessToken, ClientInterface $client)
+    {
+        if (self::$_instance === null) {
+            self::$_instance = new Entities($accessToken, $client);
+        }
+
+        return self::$_instance;
     }
 
     /**
@@ -33,7 +53,7 @@ class Entities extends AbstractApi
             $entity  = '/' . $entity;
         }
 
-        $response = $this->client->get(sprintf('/entities%s', $entity), $this->request());
+        $response = $this->client->get(sprintf('entities%s', $entity), $this->request());
 
         return $this->response($response);
     }
@@ -45,7 +65,7 @@ class Entities extends AbstractApi
     public function create(Entity $entity): EntitiesResponse
     {
         $request = new EntitiesRequest($this->accessToken, $entity);
-        $response = $this->client->post('/entities', $request->build());
+        $response = $this->client->post('entities', $request->build());
 
         return $this->response($response);
     }
@@ -57,7 +77,7 @@ class Entities extends AbstractApi
      */
     public function update(string $entityId, Entity $entity): EntitiesResponse
     {
-        $response = $this->client->put(sprintf('/entities/%s', $entityId), $this->request($entity));
+        $response = $this->client->put(sprintf('entities/%s', $entityId), $this->request($entity));
 
         return $this->response($response);
     }
@@ -68,7 +88,7 @@ class Entities extends AbstractApi
      */
     public function delete(string $entity): EntitiesResponse
     {
-        $response = $this->client->delete(sprintf('/entities/%s', $entity), $this->request($entity));
+        $response = $this->client->delete(sprintf('entities/%s', $entity), $this->request($entity));
 
         return $this->response($response);
     }
@@ -80,7 +100,7 @@ class Entities extends AbstractApi
      */
     public function addValue(string $entity, Value $value): EntitiesResponse
     {
-        $response = $this->client->post(sprintf('/entities/%s/value', $entity), $this->request($value));
+        $response = $this->client->post(sprintf('entities/%s/value', $entity), $this->request($value));
 
         return $this->response($response);
     }
@@ -92,7 +112,7 @@ class Entities extends AbstractApi
      */
     public function deleteValue(string $entity, string $value): EntitiesResponse
     {
-        $response = $this->client->delete(sprintf('/entities/%s/value/%s', $entity, $value), $this->request());
+        $response = $this->client->delete(sprintf('entities/%s/value/%s', $entity, $value), $this->request());
 
         return $this->response($response);
     }
@@ -105,7 +125,7 @@ class Entities extends AbstractApi
      */
     public function addExpression(string $entity, string $value, Expression $expression): EntitiesResponse
     {
-        $response = $this->client->post(sprintf('/entities/%s/value/%s/expressions', $entity, $value), $this->request($expression));
+        $response = $this->client->post(sprintf('entities/%s/value/%s/expressions', $entity, $value), $this->request($expression));
 
         return $this->response($response);
     }
@@ -118,7 +138,7 @@ class Entities extends AbstractApi
      */
     public function deleteExpression(string $entity, string $value, string $expression): EntitiesResponse
     {
-        $response = $this->client->delete(sprintf('/entities/%s/value/%s/expressions/%s', $entity, $value, $expression), $this->request());
+        $response = $this->client->delete(sprintf('entities/%s/value/%s/expressions/%s', $entity, $value, $expression), $this->request());
 
         return $this->response($response);
     }

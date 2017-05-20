@@ -1,4 +1,5 @@
 <?php
+
 namespace Kerox\Wit\Request;
 
 class ConverseRequest extends AbstractRequest
